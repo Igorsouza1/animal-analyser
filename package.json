@@ -10,6 +10,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.0.4",
     "cargo": "^0.8.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
