@@ -1,4 +1,4 @@
-import { ButtonDemo } from "@/components/button";
+import { ButtonBase } from "@/components/button";
 
 
 
@@ -12,7 +12,7 @@ export default function IAAnalyser() {
             <p className="leading-7 [&:not(:first-child)]:my-6">
                  Selecione uma pasta e analise milhares<br/> de imagens de forma rápida!
             </p>
-            <ButtonDemo content="Analisar Imagens"/>
+            <ButtonBase content="Analisar Imagens"/>
         </div>
     );
 }

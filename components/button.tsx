@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button"
 
 interface propsButton{
-    content: string
+    content: string,
+    onClick?: () => Promise<void>
 }
 
 
-export function ButtonDemo(props: propsButton) {
-    return <Button>{props.content}</Button>
+export function ButtonBase(props: propsButton) {
+    return <Button onClick={props.onClick}>{props.content}</Button>
   }

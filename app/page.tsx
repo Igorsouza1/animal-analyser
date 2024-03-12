@@ -1,12 +1,12 @@
 import React from 'react';
 
-import LeftSideBar from '@/components/leftsidebar';
-
-
+import { redirect } from 'next/navigation'
 
 const HomePage = () => {
   return (
-    <h1>teste</h1>
+    <div>
+      {redirect('/iaAnalyser')}
+    </div>
   );
 };
 
