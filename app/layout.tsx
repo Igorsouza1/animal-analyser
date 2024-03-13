@@ -20,8 +20,8 @@ export default function RootLayout({
       <body className={inter.className }>
         <div className="flex flex-wrap -mx-2 h-full">
             <LeftSideBar />
-          <div className="w-full md:w-4/6 m-auto ">
-            <div className="p-6 border border-gray-200 rounded-lg">
+          <div className="w-full h-full m-t-auto md:w-5/6">
+            <div className="w-full border border-gray-200 rounded-lg">
               {children}
             </div>
           </div>
