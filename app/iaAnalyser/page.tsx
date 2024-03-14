@@ -5,7 +5,7 @@ import { ButtonBase } from "@/components/button";
 
 export default function IAAnalyser() {
     return (
-        <div className="text-center p-6">
+        <div className="text-center p-6 h-screen m-auto flex flex-col items-center justify-center">
             <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl">
                 Detecção de Animais com IA
             </h1>

@@ -1,23 +1,42 @@
-import Image from 'next/image'
+'use client';
 
-
-
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { readDir } from '@tauri-apps/api/fs';
+import { convertFileSrc } from "@tauri-apps/api/tauri";
 
 export default function ImageIdentify() {
-  return (
-    <div className="flex w-screen h-screen m-0">
-      <div className="w-full md:w-3/4 border border-gray-200">
-      <Image
-        src="/logo.png"
-        width={500}
-        height={500}
-        alt="Picture of the author"
-       />
+  const [imageList, setImageList] = useState([]);
+  const searchParams = useSearchParams();
 
-      </div>
-      <div className="w-full md:w-1/4 border border-gray-200">
-        <h1>Identificação Manual de Imagens</h1>
-      </div>
+  // Obter o caminho da pasta de imagens da URL
+  const folderPath = searchParams.get('path');
+
+  useEffect(() => {
+    const loadImages = async () => {
+      if (!folderPath) return;
+
+      try {
+        // Decodificar o caminho da pasta
+        const decodedFolderPath = decodeURIComponent(folderPath);
+        const entries = await readDir(decodedFolderPath);
+        
+        const images = entries.map(entry => convertFileSrc(entry.path) as never);
+        setImageList(images);
+      } catch (err) {
+        console.error("Erro ao carregar imagens:", err);
+      }
+    };
+
+    loadImages();
+  }, [folderPath]);
+
+  return (
+    <div>
+      <h1>Imagens da Pasta</h1>
+      {imageList.map((src, index) => (
+        <img key={index} src={src} alt={`Imagem ${index}`} width="300" height="300" />
+      ))}
     </div>
   );
 }
