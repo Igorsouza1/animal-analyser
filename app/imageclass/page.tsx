@@ -19,38 +19,10 @@ export default function ImageClass() {
         return;
       }
 
-        // Assumindo que selectedPath é uma string com o caminho do diretório selecionado
-        // Navegação programática para a página de destino com o caminho da pasta como parâmetro de consulta
         router.push(`/imageclass/imageIdentify?path=${encodeURIComponent(selectedPatch[0])}`);
       } catch (err) {
         console.error("Erro ao abrir a janela", err);
       }
-        //   const entries = await readDir(selectedPatch[0]);
-
-        //   const processImages = async function processEntries(entries: any) {
-        //     let images = [];
-        //     for (const entry of entries) {
-        //       console.log(`Entry: ${entry.path}`);
-        //       if (entry.children) {
-        //         await processEntries(entry.children); 
-        //       } else {
-        //         images.push(convertFileSrc(entry.path));
-        //       }
-        //     }
-        //     return images;
-        //   };
-
-        //   processImages(entries).then(images => {
-        //     setImageList(images);
-        //   });
-
-        
-        //   console.log(processImages(entries));
-        //   console.log(selectedPatch);
-        //   console.log(entries);
-        // } catch (err) {
-        //   console.log("Erro ao abrir a janela", err);
-        // }
 
   };
 

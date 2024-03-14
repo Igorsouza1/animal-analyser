@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { readDir } from '@tauri-apps/api/fs';
 import { convertFileSrc } from "@tauri-apps/api/tauri";
 import { Carrosel } from '@/components/carrosel/carrosel';
+import { InfoImages } from '@/components/infoImages/infoimages';
 
 export default function ImageIdentify() {
   const [imageList, setImageList] = useState([]);
@@ -33,12 +34,12 @@ export default function ImageIdentify() {
   }, [folderPath]);
 
   return (
-    <div className='flex items-center p-6 h-screen m-auto flex  items-center justify-center'>
+    <div className='flex p-6 h-screen'>
       <div className="w-full">
       <Carrosel imageList={imageList} />
       </div>
       <div>
-        <p>Selecione uma imagem para identificarção manual</p>
+        <InfoImages />
       </div>
     </div>
   );
