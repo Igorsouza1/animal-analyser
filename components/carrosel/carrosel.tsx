@@ -46,7 +46,7 @@ return (
         </div>
       </CarouselItem>
     </CarouselContent>
-    <CarouselPrevious onClick={prevImage} />
+    <CarouselPrevious onClick={prevImage}   />
     <CarouselNext onClick={nextImage} />
     {isModalOpen && <ModalAnimalIdentify />}
   </Carousel>

@@ -82,10 +82,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 800,
         "resizable": true,
-        "title": "animal-analyser",
-        "width": 800
+        "title": "Animal-Analyser V1.0",
+        "width": 1400,
+        "minHeight": 800,
+        "minWidth": 1400
       }
     ]
   }

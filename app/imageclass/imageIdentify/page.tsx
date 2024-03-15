@@ -38,7 +38,7 @@ export default function ImageIdentify() {
       <div className="w-full">
       <Carrosel imageList={imageList} />
       </div>
-      <div>
+      <div className='fixed top-0 right-0'>
         <InfoImages />
       </div>
     </div>

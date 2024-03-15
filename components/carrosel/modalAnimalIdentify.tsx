@@ -7,18 +7,27 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Button } from "../ui/button";
+
 export function ModalAnimalIdentify() {
   return (
-    <Card className="fixed top-40 left-60 right-60 max-w-2xl z-50">
+    <Card className="fixed z-20 w-[400px] h-[400px] m-auto inset-x-0 inset-y-0 ">
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <CardTitle>Classificar Espécie</CardTitle>
+        <CardDescription>Adicione informações sobre a imagem</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card Content</p>
+        <p>Espécie</p>
+        <Input />
+      </CardContent>
+      <CardContent>
+        <p>Observação</p>
+        <Textarea />
       </CardContent>
       <CardFooter>
-        <p>Card Footer</p>
+        <Button>Adicionar</Button>
       </CardFooter>
     </Card>
   );
