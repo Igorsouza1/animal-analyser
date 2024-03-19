@@ -90,6 +90,7 @@ dependencies = [
  "tauri",
  "tauri-build",
  "tauri-plugin-sql",
+ "tauri-plugin-store",
 ]
 
 [[package]]
@@ -3376,7 +3377,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-sql"
 version = "0.0.0"
-source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v1#d95a1b382f512a0be748e7a89e0f8fc4278010e2"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v1#160498dae5bfb1761275b6af69678ff820ee73bd"
 dependencies = [
  "futures-core",
  "log",
@@ -3387,6 +3388,18 @@ dependencies = [
  "thiserror",
  "time",
  "tokio",
+]
+
+[[package]]
+name = "tauri-plugin-store"
+version = "0.0.0"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v1#160498dae5bfb1761275b6af69678ff820ee73bd"
+dependencies = [
+ "log",
+ "serde",
+ "serde_json",
+ "tauri",
+ "thiserror",
 ]
 
 [[package]]
