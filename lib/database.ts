@@ -19,7 +19,7 @@ export class DatabaseManager {
     if (this.db) { // Add this check to ensure this.db is not null
         try {
             await this.db.execute(
-              "CREATE TABLE IF NOT EXISTS animal (ID INTEGER PRIMARY KEY, IMG TEXT, CAM TEXT, Especie TEXT, NomeCientifico TEXT, Grupo TEXT, Data TEXT, OBS TEXT, Latitude REAL, Longitude REAL);"
+              "CREATE TABLE IF NOT EXISTS animal (ID INTEGER PRIMARY KEY AUTOINCREMENT, IMG TEXT, CAM TEXT, Especie TEXT, NomeCientifico TEXT, Grupo TEXT, Data TEXT, OBS TEXT, Latitude REAL, Longitude REAL);"
             );
             console.log("Table created successfully.");
         } catch (e) {
@@ -68,6 +68,7 @@ export class DatabaseManager {
       return animals;
     } catch (e) {
       console.error("Error selecting data from table", e);
+      return []
     }
   }
 }
