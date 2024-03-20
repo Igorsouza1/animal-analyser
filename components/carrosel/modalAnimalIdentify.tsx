@@ -10,25 +10,21 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "../ui/button";
-import { Store } from "tauri-plugin-store-api";
-import Database from "tauri-plugin-sql-api";
+import { DatabaseManager } from '../../lib/database';
+import { useState } from "react";
+
 
 
 export function ModalAnimalIdentify() {
+  const [especie, setEspecie] = useState('');
+  const [observacao, setObservacao] = useState('');
 
-  async function saveToStore() {
-    const db = await Database.load("sqlite:test.sqlite");
+  async function saveToDB() {
+    const dbManager = new DatabaseManager();
+    await dbManager.initialize();
     
-    try {
-      await db.execute("CREATE TABLE IF NOT EXISTS animal (id INTEGER PRIMARY KEY,nome TEXT NOT NULL, obs TEXT);");
-      await db.execute("INSERT INTO animal (nome, obs) VALUES ('João', 'Observação sobre João'), ('Maria', 'Observação sobre Maria'), ('Pedro', NULL); -- Pedro não possui observação")
-      
-      console.log("CERTO")
-      console.log(await db.select("SELECT * FROM animal"))
-    } catch (e) {
-      console.error("Falha ao salvar na store", e);
-      console.log("Falha")
-    }
+    await dbManager.insertDataIntoTable('imagem1.jpg', 'Câmera A', especie, 'Canis lupus familiaris', 'Mamífero', new Date(Date.now()), observacao, -20.4536, -54.5856);
+    console.log(await dbManager.selectAllAnimals())
   }
   
 
@@ -40,14 +36,14 @@ export function ModalAnimalIdentify() {
       </CardHeader>
       <CardContent>
         <p>Espécie</p>
-        <Input />
+        <Input value={especie} onChange={(e) => setEspecie(e.target.value)} />
       </CardContent>
       <CardContent>
         <p>Observação</p>
-        <Textarea />
+        <Textarea value={observacao} onChange={(e) => setObservacao(e.target.value)} />
       </CardContent>
       <CardFooter>
-        <Button onClick={saveToStore}>Adicionar</Button>
+        <Button onClick={saveToDB}>Adicionar</Button>
       </CardFooter>
     </Card>
   );
