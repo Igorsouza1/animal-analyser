@@ -2,7 +2,7 @@
 
 import { ButtonBase } from "@/components/button";
 import { open } from "@tauri-apps/api/dialog";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function ImageClass() {
   const router = useRouter();

@@ -8,12 +8,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useHotkeys } from "react-hotkeys-hook";
-import { ModalAnimalIdentify } from "./modalAnimalIdentify";
 
 export function Carrosel({ imageList }: { imageList: string[] }) {
 
 const [currentIndex, setCurrentIndex] = React.useState(0);
-const [isModalOpen, setIsModalOpen] = React.useState(false);
 
 
 const nextImage = () => {
@@ -28,7 +26,6 @@ const prevImage = () => {
 
 useHotkeys('right', nextImage);
 useHotkeys('left', prevImage);
-useHotkeys('m', () => setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen));
 
 return (
   <Carousel className="w-full">
@@ -46,9 +43,8 @@ return (
         </div>
       </CarouselItem>
     </CarouselContent>
-    <CarouselPrevious onClick={prevImage}   />
-    <CarouselNext onClick={nextImage} />
-    {isModalOpen && <ModalAnimalIdentify imageList={imageList}/>}
+    <CarouselPrevious className="hidden" onClick={prevImage}   />
+    <CarouselNext className="hidden" onClick={nextImage} />
   </Carousel>
 );
 }
