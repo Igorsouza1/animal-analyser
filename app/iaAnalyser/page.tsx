@@ -11,6 +11,10 @@ interface DescriptionProps{
 
 
 export default function IAAnalyser() {
+    
+
+
+
     return (
         <ContainerAction>
             <TitleContainerAction title="Analise de Imagens com Inteligência Artificial"/>

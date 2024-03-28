@@ -1,29 +1,20 @@
 'use client'
 
 import { ButtonBase } from "@/components/button";
-import { open } from "@tauri-apps/api/dialog";
+import { useFolderPicker, hasImageFiles } from "@/utils/useFolderPick";
 import { useRouter } from "next/navigation";
 
 export default function ImageClass() {
+  const { selectFolder } = useFolderPicker();
   const router = useRouter();
 
   const handleIdentifyImages = async () => {
-    try {
-      const selectedPatch = await open({
-        multiple: true,
-        title: "Selecione uma imagem",
-        directory: true,
-      });
+    const selectedPath = await selectFolder();
+    if (selectedPath && await hasImageFiles(selectedPath)) {
+      router.push(`/imageclass/imageIdentify?path=${encodeURIComponent(selectedPath)}`);
+    }
 
-      if (!selectedPatch) {
-        return;
-      }
-
-        router.push(`/imageclass/imageIdentify?path=${encodeURIComponent(selectedPatch[0])}`);
-      } catch (err) {
-        console.error("Erro ao abrir a janela", err);
-      }
-
+    
   };
 
   return (
@@ -32,15 +23,13 @@ export default function ImageClass() {
         Identificação Manual de Imagens
       </h1>
       <p className="leading-7 [&:not(:first-child)]:my-6">
-        Identifique manualmente as imagens
-        <br /> para gerar dados e insights
+        Identifique manualmente as imagens para gerar
+        <br />  dados e insights
       </p>
       <ButtonBase
         onClick={handleIdentifyImages}
         content="Identificar Imagens"
       />
-
-      
     </div>
   );
 }
